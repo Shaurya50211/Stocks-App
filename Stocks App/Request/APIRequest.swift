@@ -12,7 +12,7 @@ struct APIRequest {
     static let instance = APIRequest()
     
     public func getSymbol(symbol: String, handler: @escaping(_ returnedQuote: Quote?) -> ()) {
-        let url = URL(string: "https://finnhub.io/api/v1/quote?symbol=\(symbol)&token=cf84ahqad3i8qmbtj11gcf84ahqad3i8qmbtj120")
+        let url = URL(string: "https://finnhub.io/api/v1/quote?symbol=\(symbol)&token=YOUR_TOKEN_HERE")
         
         if let url = url {
             URLSession.shared.dataTask(with: url) { data, response, error in
@@ -35,7 +35,7 @@ struct APIRequest {
     }
     
     public func symbolLookup(searchQuery: String, handler: @escaping(_ returnedLookup: StockSymbolSearch?) -> ()) {
-        let url = URL(string: "https://finnhub.io/api/v1/search?q=\(searchQuery)&token=cf84ahqad3i8qmbtj11gcf84ahqad3i8qmbtj120")
+        let url = URL(string: "https://finnhub.io/api/v1/search?q=\(searchQuery)&token=YOUR_TOKEN_HERE")
         
         if let url = url {
             URLSession.shared.dataTask(with: url) { data, response, error in
@@ -59,7 +59,7 @@ struct APIRequest {
     public func getCandle(symbol: String, hourLength: Int, handler: @escaping(_ returnedCandle: Candles?) -> ()) {
         let endDate = Int(Date().timeIntervalSince1970)
         let startDate = Int((Calendar.current.date(byAdding: .hour, value: -(hourLength), to: Date())?.timeIntervalSince1970 ?? Date().timeIntervalSince1970))
-        let url = URL(string: "https://finnhub.io/api/v1/stock/candle?symbol=\(symbol)&resolution=5&from=\(startDate)&to=\(endDate)&token=cf84ahqad3i8qmbtj11gcf84ahqad3i8qmbtj120")
+        let url = URL(string: "https://finnhub.io/api/v1/stock/candle?symbol=\(symbol)&resolution=5&from=\(startDate)&to=\(endDate)&token=YOUR_TOKEN_HERE")
         
         if let url = url {
             URLSession.shared.dataTask(with: url) { data, response, error in
